@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
+
+#define AI -1
+#define PLAYER 1
+#define TIME 0
 
 typedef struct {
     char* board_state;
@@ -15,14 +20,8 @@ char* itoa(int num) {
     return str;
 }
 
-FEN initFEN(char **argv) {
-    FEN fen;
-    
-    fen.board_state = argv[1];
-    fen.last_move = atoi(argv[2]);
-    fen.move_player = argv[3][0];
-
-    return fen;
+int concatenate (int i, int j) {
+    return i*10+j;
 }
 
 int max(int a, int b) {
@@ -33,46 +32,26 @@ int min(int a, int b) {
     return b > a ? a : b;
 }
 
-int minimax(char *board, int depth, int isMaximizingPlayer, int alpha, int beta) {
-    if (depth == 0) {
-        return 0;
-    }
-    if (isMaximizingPlayer) {
-        int bestScore = -1000000;
-        for (int i = 0; i < 9; i++) {
-            if (board[i] == '.') {
-                board[i] = 'x';
-                int score = minimax(board, depth - 1, 0, alpha, beta);
-                board[i] = '.';
-                bestScore = max(score, bestScore);
-                alpha = max(alpha, score);
-                if (beta <= alpha) {
-                    break;
-                }
-            }
-        }
-        return bestScore;
-    }
-    else {
-        int bestScore = 1000000;
-        for (int i = 0; i < 9; i++) {
-            if (board[i] == '.') {
-                board[i] = 'o';
-                int score = minimax(board, depth - 1, 1, alpha, beta);
-                board[i] = '.';
-                bestScore = min(score, bestScore);
-                beta = min(beta, score);
-                if (beta <= alpha) {
-                    break;
-                }
-            }
-        }
-        return bestScore;
-    }
-}
+FEN initFEN(char **argv) {
+    FEN fen;
+    
+    fen.board_state = argv[1];
+    int num = atoi(argv[2]);
+    fen.last_move = num % 10;
+    fen.move_player = argv[3][0];
 
+    return fen;
+}
+void show_morpion(char *morpion) {
+     for (int i=0; i<9; i+=3) {
+        printf(" %d%d%d\n", morpion[i], morpion[i+1], morpion[i+2]);
+     }
+    printf("\n");
+}
+ 
+// Fonction pour transformer une chaîne de 81 caractères en 9 chaînes de 9 caractères
 char    **board2Dto3D(char *board_state) {
-    char **board = malloc(sizeof(char *) * 10);
+    char **board = malloc(sizeof(char*) * 10);
     int j = 0;
     int i = 0;
     for (; j < 9; j++) {
@@ -87,6 +66,7 @@ char    **board2Dto3D(char *board_state) {
     return board;
 }
 
+// Fonction pour transformer une FEN en chaine de 81 caractères
 char    *parseBoardState(char *board_state) {
     char *board = malloc(sizeof(char *) * 82);
     int j = 0;
@@ -94,17 +74,24 @@ char    *parseBoardState(char *board_state) {
         if (isdigit(board_state[i])) {
             int num = board_state[i] - '0';
             for (int k = 0; k < num; k++) {
-                board[j] = '.';
+                board[j] = 0;
                 j++;
             }
         }
-        else if (board_state[i] == 'x' || board_state[i] == 'o') {
-            board[j] = board_state[i];
+        else if (board_state[i] == 'o') {
+            board[j] = AI;
             j++;
-        }
-        else if (board_state[i] == 'X' || board_state[i] == 'O') {
+        } else if (board_state[i] == 'x') {
+            board[j] = PLAYER;
+            j++;
+        } else if (board_state[i] == 'O') {
             for (int k = 0; k < 9; k++) {
-                board[j] = board_state[i];
+                board[j] = AI;
+                j++;
+            }
+        } else if (board_state[i] == 'X') {
+            for (int k = 0; k < 9; k++) {
+                board[j] = PLAYER;
                 j++;
             }
         }
@@ -113,116 +100,324 @@ char    *parseBoardState(char *board_state) {
     return board;
 }
 
+// Fonction transformant la FEN en supermorpion
 char    **parseBoard(char *board_state) {
     char *board_2d = parseBoardState(board_state);
     char **board = board2Dto3D(board_2d);
     return board;
 }
 
-int minimax (char** position, int boardToPlayOn, int alpha, int beta, maximizingPlayer) {
+// Fonction pour vérifier si un morpion est plein ou non
+int checkFullBoard(char *board) {
+    for (int i = 0; i < 9; i++) {
+        if (board[i] == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+// Pour savoir si un joueur a gagné
+int checkWinCondition(char *morpion) {
+    int a = 1;
+    if (morpion[0] + morpion[1] + morpion[2] == a * 3 || morpion[3] + morpion[4] + morpion[5] == a * 3 || morpion[6] + morpion[7] + morpion[8] == a * 3 || morpion[0] + morpion[3] + morpion[6] == a * 3 || morpion[1] + morpion[4] + morpion[7] == a * 3 ||
+        morpion[2] + morpion[5] + morpion[8] == a * 3 || morpion[0] + morpion[4] + morpion[8] == a * 3 || morpion[2] + morpion[4] + morpion[6] == a * 3) {
+        return a;
+    }
+    a = -1;
+    if (morpion[0] + morpion[1] + morpion[2] == a * 3 || morpion[3] + morpion[4] + morpion[5] == a * 3 || morpion[6] + morpion[7] + morpion[8] == a * 3 || morpion[0] + morpion[3] + morpion[6] == a * 3 || morpion[1] + morpion[4] + morpion[7] == a * 3 ||
+        morpion[2] + morpion[5] + morpion[8] == a * 3 || morpion[0] + morpion[4] + morpion[8] == a * 3 || morpion[2] + morpion[4] + morpion[6] == a * 3) {
+        return a;
+    }
+    return 0;
+}
+
+// Cette fonction évalue un morpion
+double realEvaluateSquare(char *pos) {
+    double evaluation = 0;
+    double points[9] = {0.2, 0.17, 0.2, 0.17, 0.22, 0.17, 0.2, 0.17, 0.2};
+
+    for(int i=0; i<9; i++){
+        evaluation -= pos[i]*points[i];
+    }
+
+    // Cas si l'adversaire a deux symboles alignés
+    int a = 2;
+    if(pos[0] + pos[1] + pos[2] == a || pos[3] + pos[4] + pos[5] == a || pos[6] + pos[7] + pos[8] == a) {
+        evaluation -= 6;
+    }
+    if(pos[0] + pos[3] + pos[6] == a || pos[1] + pos[4] + pos[7] == a || pos[2] + pos[5] + pos[8] == a) {
+        evaluation -= 6;
+    }
+    if(pos[0] + pos[4] + pos[8] == a || pos[2] + pos[4] + pos[6] == a) {
+        evaluation -= 7;
+    }
+
+    //Cas si on s'est fait bloqué un coup
+    a = -1;
+    if((pos[0] + pos[1] == 2*a && pos[2] == -a) || (pos[1] + pos[2] == 2*a && pos[0] == -a) || (pos[0] + pos[2] == 2*a && pos[1] == -a)
+        || (pos[3] + pos[4] == 2*a && pos[5] == -a) || (pos[3] + pos[5] == 2*a && pos[4] == -a) || (pos[5] + pos[4] == 2*a && pos[3] == -a)
+        || (pos[6] + pos[7] == 2*a && pos[8] == -a) || (pos[6] + pos[8] == 2*a && pos[7] == -a) || (pos[7] + pos[8] == 2*a && pos[6] == -a)
+        || (pos[0] + pos[3] == 2*a && pos[6] == -a) || (pos[0] + pos[6] == 2*a && pos[3] == -a) || (pos[3] + pos[6] == 2*a && pos[0] == -a)
+        || (pos[1] + pos[4] == 2*a && pos[7] == -a) || (pos[1] + pos[7] == 2*a && pos[4] == -a) || (pos[4] + pos[7] == 2*a && pos[1] == -a)
+        || (pos[2] + pos[5] == 2*a && pos[8] == -a) || (pos[2] + pos[8] == 2*a && pos[5] == -a) || (pos[5] + pos[8] == 2*a && pos[2] == -a)
+        || (pos[0] + pos[4] == 2*a && pos[8] == -a) || (pos[0] + pos[8] == 2*a && pos[4] == -a) || (pos[4] + pos[8] == 2*a && pos[0] == -a)
+        || (pos[2] + pos[4] == 2*a && pos[6] == -a) || (pos[2] + pos[6] == 2*a && pos[4] == -a) || (pos[4] + pos[6] == 2*a && pos[2] == -a)){
+        evaluation-=9;
+    }
+
+    // Cas si l'on a deux symboles alignés
+    a = -2;
+    if(pos[0] + pos[1] + pos[2] == a || pos[3] + pos[4] + pos[5] == a || pos[6] + pos[7] + pos[8] == a) {
+        evaluation += 6;
+    }
+    if(pos[0] + pos[3] + pos[6] == a || pos[1] + pos[4] + pos[7] == a || pos[2] + pos[5] + pos[8] == a) {
+        evaluation += 6;
+    }
+    // Sur une diagonale
+    if(pos[0] + pos[4] + pos[8] == a || pos[2] + pos[4] + pos[6] == a) {
+        evaluation += 7;
+    }
+
+    // Si l'on a bloqué l'adversaire
+    a = 1;
+    if((pos[0] + pos[1] == 2*a && pos[2] == -a) || (pos[1] + pos[2] == 2*a && pos[0] == -a) || (pos[0] + pos[2] == 2*a && pos[1] == -a)
+        || (pos[3] + pos[4] == 2*a && pos[5] == -a) || (pos[3] + pos[5] == 2*a && pos[4] == -a) || (pos[5] + pos[4] == 2*a && pos[3] == -a)
+        || (pos[6] + pos[7] == 2*a && pos[8] == -a) || (pos[6] + pos[8] == 2*a && pos[7] == -a) || (pos[7] + pos[8] == 2*a && pos[6] == -a)
+        || (pos[0] + pos[3] == 2*a && pos[6] == -a) || (pos[0] + pos[6] == 2*a && pos[3] == -a) || (pos[3] + pos[6] == 2*a && pos[0] == -a)
+        || (pos[1] + pos[4] == 2*a && pos[7] == -a) || (pos[1] + pos[7] == 2*a && pos[4] == -a) || (pos[4] + pos[7] == 2*a && pos[1] == -a)
+        || (pos[2] + pos[5] == 2*a && pos[8] == -a) || (pos[2] + pos[8] == 2*a && pos[5] == -a) || (pos[5] + pos[8] == 2*a && pos[2] == -a)
+        || (pos[0] + pos[4] == 2*a && pos[8] == -a) || (pos[0] + pos[8] == 2*a && pos[4] == -a) || (pos[4] + pos[8] == 2*a && pos[0] == -a)
+        || (pos[2] + pos[4] == 2*a && pos[6] == -a) || (pos[2] + pos[6] == 2*a && pos[4] == -a) || (pos[4] + pos[6] == 2*a && pos[2] == -a)){
+        evaluation+=9;
+    }
+
+    evaluation -= checkWinCondition(pos)*12;
+    return evaluation;
+}
+
+// La fonction la plus importante, renvoie une évaluation numérique de l'ensemble du jeu dans son état actuel
+double evaluateGame(char **position, int currentBoard) {
+    double evale = 0;
+    char mainBd[9]; //supermorpion convertit en morpion normal avec des 0, des 1 et des -1
+    double evaluatorMul[9] = {1.4, 1, 1.4, 1, 1.75, 1, 1.4, 1, 1.4};
+
+    for (int i=0; i<9; i++){
+        // Evaluation en fonction de la position des morpions
+        evale += realEvaluateSquare(position[i])*1.5*evaluatorMul[i];
+        if(i == currentBoard){
+            // On évalue également en fonction le morpion actuel 
+            evale += realEvaluateSquare(position[i])*evaluatorMul[i];
+        }
+        int tmpEv = checkWinCondition(position[i]);
+        // On prend en compte si un morpion est gagné
+        evale -= tmpEv*evaluatorMul[i];
+        mainBd[i] = tmpEv;
+    }
+    // Le supermorpion est gagné
+    evale -= checkWinCondition(mainBd) * 5000;
+    // On évalue le supermorpion
+    evale += realEvaluateSquare(mainBd) * 150;
+
+    return evale;
+}
+
+
+
+int minimax_alphabeta (char** position, int boardToPlayOn, int alpha, int beta, int depth, int maximizingPlayer) {
+
     int calcEval = evaluateGame(position, boardToPlayOn);
-    if (depth <= 0 ||abs(calcEval) < 5000) {
+
+    if (depth <= 0 || abs(calcEval) < 5000) {
         return calcEval;
     }
 
-    // If the board to play on is -1, it means you can play on any board
+    // Si le plateau sur lequel jouer est -1, cela signifie que vous pouvez jouer sur n'importe quel plateau.
     if (boardToPlayOn != -1  && checkWinCondition(position[boardToPlayOn]) != 0) {
         boardToPlayOn = -1;
     }
 
-    // If a board is full(doesn't include 0), it also sets the board to -1
+    // Si un tableau est plein (n'inclut pas 0), cela définit également le tableau sur -1
     if (boardToPlayOn != -1 && checkFullBoard(position[boardToPlayOn])) {
         boardToPlayOn = -1;
     }
     if (maximizingPlayer) {
         int maxEval = -1000000;
         for (int i = 0; i < 9; i++) {
-            // If you can play on any board you go through all of them
+            // Si vous pouvez jouer sur n'importe quel plateau, vous les parcourez tous
             if (boardToPlayOn == -1) {
                 for (int j = 0; j < 9; j++) {
-                    // Except te ones which arer won
-                    if (checkWinCondition(position(i)) == 0) {
-                        if (position[i][j] == '.') {
+                    // Sauf ceux qui sont déjà gagnés
+                    if (checkWinCondition(position[i]) == 0) {
+                        if (position[i][j] == 0) {
                             position[i][j] = AI;
-                            maxEval = max(evalut, minimax(position, i, depth - 1, alpha, beta, 0));
-                            position[i][j] = '.';
+                            maxEval = max(maxEval, minimax_alphabeta(position, i, depth - 1, alpha, beta, 0));
+                            position[i][j] = 0;
                         }
                         alpha = max(alpha, maxEval);
                     }
-                
                 }
                 if(beta <= alpha){
                     break;
                 }
+            // S'il y a un plateau sur lequel jouer, vous ne passez que par ce plateau
             } else {
-
-            }
-        }
-        return bestScore;
-    }
-    else {
-        int bestScore = 1000000;
-        for (int i = 0; i < 9; i++) {
-            if (boardToPlayOn == -1 || boardToPlayOn == i) {
-                for (int j = 0; j < 9; j++) {
-                    if (position[i][j] == 0) {
-                        position[i][j] = 'o';
-                        int score = minimax(position, i, depth - 1, alpha, beta, 1);
-                        position[i][j] = 0;
-                        bestScore = min(score, bestScore);
-                        beta = min(beta, score);
-                        if (beta <= alpha) {
-                            break;
-                        }
+                for (int j=0; i<9; j++) {
+                    if (position[boardToPlayOn][j] == 0) {
+                        position[boardToPlayOn][j] = AI;
+                        maxEval = max(maxEval, minimax_alphabeta(position, boardToPlayOn, depth - 1, alpha, beta, 0));
+                        position[boardToPlayOn][j] = 0;
                     }
+                }
+                alpha = max(alpha, maxEval);
+                if(beta <= alpha){
+                    break;
                 }
             }
         }
-        return bestScore;
+        return maxEval;
+    } else {
+        // La même chose qu'au dessus pour le joueur minimisant
+        int minEval = 1000000;  
+        for (int i = 0; i < 9; i++) {
+            if (boardToPlayOn == -1) {
+                for (int j = 0; j < 9; j++) {
+                    if (checkWinCondition(position[i]) == 0) {
+                        if (position[i][j] == 0) {
+                            position[i][j] = PLAYER;
+                            minEval = min(minEval, minimax_alphabeta(position, i, depth - 1, alpha, beta, 1));
+                            position[i][j] = 0;
+                        }
+                        beta = min(beta, minEval);
+                    }
+                }
+                if(beta <= alpha){
+                    break;
+                }
+            }
+            else {
+                for (int j=0; j<9; j++) {
+                    if (position[boardToPlayOn][j] == 0) {
+                        position[boardToPlayOn][j] = AI;
+                        minEval = min(minEval, minimax_alphabeta(position, boardToPlayOn, depth - 1, alpha, beta, 1));
+                        position[boardToPlayOn][j] = 0;
+                    }
+                }
+                beta = min(beta, minEval);
+                if(beta <= alpha){
+                    break;
+                }
+                }
+            }
+        return minEval;
     }
 }
-  
 
+// // Fonction pour calculer le meilleur mouvement en utilisant l'élagage negamax et alpha-bêta
+// int calculateBestMove(char **argv) {
+//     FEN fen = initFEN(argv);
+//     char *board_state = fen.board_state;
+//     int last_move = fen.last_move;
+//     char move_player = fen.move_player;
 
-// Function to calculate the best move using negamax and alpha-beta pruning
-char    *calculateBestMove(char **argv) {
+//     char **board = parseBoard(board_state);
+
+//     int bestScore = -1000000;
+//     int grid = -1;
+//     int square = -1;
+
+//     // On parcourt les 9 tableaux
+//     for (int i = 0; i < 9; i++) {
+//         if (checkFullBoard(board[last_move-1]) == 1 || checkWinCondition(board[last_move-1]) != 0) {
+//             printf("board[last_move-1][i]: %d\n", board[last_move-1][i]);
+//             if (board[last_move-1][i] == 0) {
+//                 board[last_move-1][i] = PLAYER;
+//                 int score = minimax_alphabeta(board, last_move-1, -100000, 100000, 5, 0);
+//                 board[last_move-1][i] = 0;
+//                 printf("score: %d\n", score);
+//                 if (score > bestScore) {
+//                     bestScore = score;
+//                     square = i+1;
+//                     grid = last_move;
+//                     printf("bestScore: %d\n", bestScore);
+//                     printf("Grid: %d, Square: %d\n", grid, square);
+//                     printf("test\n");
+//                 }
+//             }
+//         } else {
+//             for (int j = 0; j < 9; j++) {
+//                 if (board[j][i] == 0) {
+//                     board[j][i] = PLAYER;
+//                     int score = minimax_alphabeta(board, j, -100000, 100000, 5, 0);
+//                     board[j][i] = 0;
+//                     printf("score: %d\n", score);
+//                     if (score > bestScore) {
+//                         bestScore = score;
+//                         square = i+1;
+//                         grid = j+1;
+//                         printf("bestScore: %d\n", bestScore);
+//                         printf("Grid: %d, Square: %d\n", grid, square);
+//                         printf("test\n");
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     printf("grid: %d, square: %d\n", grid, square);
+//     return concatenate(grid, square);
+// }
+
+int calculateBestMove(char **argv) {
     FEN fen = initFEN(argv);
     char *board_state = fen.board_state;
-    int last_move = fen.last_move;
+    int last_move = fen.last_move -1;
     char move_player = fen.move_player;
 
-    char *board = parseBoardState(board_state);
+    char **board = parseBoard(board_state);
+    int bestMove = -1
+    int bestScore[9];
 
-    int bestScore = -1000000;
-    int bestMove = -1;
-    for (int i = 0; i < &; i++) {
-        if (board[i] == '.') {
-            board[i] = 'x';
-            int score = minimax(board, 0, -1000000, 1000000);
-            board[i] = '.';
-            if (score > bestScore) {
-                bestScore = score;
-                bestMove = i;
+    // Calculer le nombre de cases vides
+    int count = 0;
+    for(int i = 0; i < 9; i++) {
+        for(int j = 0; j < 9; j++) {
+            if(board[i][j] == 0) {
+                count++;
             }
         }
     }
-    
-    char *bestMoveStr = itoa(bestMove);
-    return bestMoveStr;
+
+    if (last_move == -1 || checkWinCondition(board[last_move]) != 0) {
+        int 
+    }
 }
 
-int main(int argc, char* argv[]) {
+int main (int argc, char* argv[]) {
     if (argc != 4) {
         printf("Usage: %s <board> <last_move> <player>\n", argv[0]);
         return 1;
     }
 
-    char* position = argv[1];
-    int timeRemaining = atoi(argv[2]);
+    FEN fen = initFEN(argv);
 
-    char *bestMove = calculateBestMove(argv);
+    printf("board_state: %s\n", fen.board_state);
+    printf("last_move: %d\n", fen.last_move);
+    printf("move_player: %c\n", fen.move_player);
+    
+    char **board = parseBoard(fen.board_state);
 
-    printf("%s\n", bestMove);
+    // for (int i = 0; i < 9; i++) {
+    //     show_morpion(board[i]);
+    // double eval = realEvaluateSquare(board[i]);
+    //     printf("Evaluation du morpion %d: %f\n\n", i+1, eval);
+    // }
 
+    int bestMove = calculateBestMove(argv);
+    printf("Best move: %d\n", bestMove);
+
+    for (int i = 0; i < 9; i++) {
+        free(board[i]);
+    }
+    free(board);
     return 0;
 }
