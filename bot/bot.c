@@ -329,9 +329,36 @@ int calculateBestMove(char **argv) {
     int grid = -1;
     int square = -1;
 
+    /**
+     * Checks the win condition for each position on the board.
+     * 
+     * @param board The game board.
+     * @return The win condition for each position on the board.
+     */
+    char morpion[9];
+    for (int i=0; i<9; i++) {
+        morpion[i] = checkWinCondition(board[i]);
+    }
+
+    /**
+     * Checks if the game has already been won.
+     * If the game has already been won, it prints an error message and exits the program.
+     */
+    if (checkWinCondition(morpion) != 0) {
+        printf("Invalid position: game already won\n");
+        exit(1);
+    }
+
+    /**
+     * This code block checks if the board is full or if there is a win condition.
+     * If either condition is true, it iterates through each grid and each square to find the best move.
+     * The best move is determined using the minimax algorithm with alpha-beta pruning.
+     * The score of each move is printed and the best score and corresponding square and grid are updated.
+     */
+
     if (checkFullBoard(board[last_move-1]) == 1 || checkWinCondition(board[last_move-1]) != 0) {
         for (int i = 0; i < 9; i++) {
-            if (checkFullBoard(board[i]) == 1 || checkWinCondition(board[i]) != 0) {
+            if (checkFullBoard(board[i]) != 1 || checkWinCondition(board[i]) == 0) {
                 for (int j = 0; j < 9; j++) {
                     if (board[i][j] == 0) {
                         board[i][j] = AI;
@@ -347,8 +374,18 @@ int calculateBestMove(char **argv) {
                 }
             }
         } 
-    } else {
-        // On parcourt les 9 tableaux
+    }
+    
+    /**
+     * This section of code iterates through the 9 arrays of the board and evaluates the best move for the AI player.
+     * It uses the minimax algorithm with alpha-beta pruning to determine the optimal move.
+     * The algorithm considers a depth of 5 moves ahead and evaluates the score for each possible move.
+     * The score is then compared to find the best move with the highest score.
+     * The best move's score, grid, and square are printed for debugging purposes.
+     */
+
+    else {
+        // Iterate through the 9 arrays of the board
         for (int i = 0; i < 9; i++) {
             if (board[last_move-1][i] == 0) {
                 board[last_move-1][i] = AI;
@@ -425,9 +462,9 @@ int main (int argc, char* argv[]) {
     
     char **board = parseBoard(fen.board_state);
 
-    for (int i = 0; i < 9; i++) {
-        show_morpion(board[i]);
-    }
+    // for (int i = 0; i < 9; i++) {
+    //     show_morpion(board[i]);
+    // }
 
 
     // for (int i = 0; i < 9; i++) {
