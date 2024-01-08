@@ -4,9 +4,12 @@
 #include <ctype.h>
 #include <math.h>
 
-#define AI -1
-#define PLAYER 1
+// #define AI -1
+// #define PLAYER 1
 #define TIME 0
+
+int AI;
+int PLAYER;
 
 typedef struct {
     char* board_state;
@@ -313,84 +316,92 @@ int minimax_alphabeta (char** position, int boardToPlayOn, int alpha, int beta, 
     }
 }
 
-// // Fonction pour calculer le meilleur mouvement en utilisant l'élagage negamax et alpha-bêta
-// int calculateBestMove(char **argv) {
-//     FEN fen = initFEN(argv);
-//     char *board_state = fen.board_state;
-//     int last_move = fen.last_move;
-//     char move_player = fen.move_player;
-
-//     char **board = parseBoard(board_state);
-
-//     int bestScore = -1000000;
-//     int grid = -1;
-//     int square = -1;
-
-//     // On parcourt les 9 tableaux
-//     for (int i = 0; i < 9; i++) {
-//         if (checkFullBoard(board[last_move-1]) == 1 || checkWinCondition(board[last_move-1]) != 0) {
-//             printf("board[last_move-1][i]: %d\n", board[last_move-1][i]);
-//             if (board[last_move-1][i] == 0) {
-//                 board[last_move-1][i] = PLAYER;
-//                 int score = minimax_alphabeta(board, last_move-1, -100000, 100000, 5, 0);
-//                 board[last_move-1][i] = 0;
-//                 printf("score: %d\n", score);
-//                 if (score > bestScore) {
-//                     bestScore = score;
-//                     square = i+1;
-//                     grid = last_move;
-//                     printf("bestScore: %d\n", bestScore);
-//                     printf("Grid: %d, Square: %d\n", grid, square);
-//                     printf("test\n");
-//                 }
-//             }
-//         } else {
-//             for (int j = 0; j < 9; j++) {
-//                 if (board[j][i] == 0) {
-//                     board[j][i] = PLAYER;
-//                     int score = minimax_alphabeta(board, j, -100000, 100000, 5, 0);
-//                     board[j][i] = 0;
-//                     printf("score: %d\n", score);
-//                     if (score > bestScore) {
-//                         bestScore = score;
-//                         square = i+1;
-//                         grid = j+1;
-//                         printf("bestScore: %d\n", bestScore);
-//                         printf("Grid: %d, Square: %d\n", grid, square);
-//                         printf("test\n");
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     printf("grid: %d, square: %d\n", grid, square);
-//     return concatenate(grid, square);
-// }
-
+// Fonction pour calculer le meilleur mouvement en utilisant l'élagage negamax et alpha-bêta
 int calculateBestMove(char **argv) {
     FEN fen = initFEN(argv);
     char *board_state = fen.board_state;
-    int last_move = fen.last_move -1;
+    int last_move = fen.last_move;
     char move_player = fen.move_player;
 
     char **board = parseBoard(board_state);
-    int bestMove = -1
-    int bestScore[9];
 
-    // Calculer le nombre de cases vides
-    int count = 0;
-    for(int i = 0; i < 9; i++) {
-        for(int j = 0; j < 9; j++) {
-            if(board[i][j] == 0) {
-                count++;
+    int bestScore = -1000000;
+    int grid = -1;
+    int square = -1;
+
+    if (checkFullBoard(board[last_move-1]) == 1 || checkWinCondition(board[last_move-1]) != 0) {
+        for (int i = 0; i < 9; i++) {
+            if (checkFullBoard(board[i]) == 1 || checkWinCondition(board[i]) != 0) {
+                for (int j = 0; j < 9; j++) {
+                    if (board[i][j] == 0) {
+                        board[i][j] = AI;
+                        int score = minimax_alphabeta(board, i, -100000, 100000, 5, 0);
+                        board[i][j] = 0;
+                        printf("score: %d\n", score);
+                        if (score > bestScore) {
+                            bestScore = score;
+                            square = j+1;
+                            grid = i+1;
+                        }
+                    }
+                }
+            }
+        } 
+    } else {
+        // On parcourt les 9 tableaux
+        for (int i = 0; i < 9; i++) {
+            if (board[last_move-1][i] == 0) {
+                board[last_move-1][i] = AI;
+                int score = minimax_alphabeta(board, i, -100000, 100000, 5, 0);
+                board[last_move-1][i] = 0;
+                printf("score: %d\n", score);
+                if (score > bestScore) {
+                    bestScore = score;
+                    square = i+1;
+                    grid = last_move;
+                    printf("bestScore: %d\n", bestScore);
+                    printf("Grid: %d, Square: %d\n", grid, square);
+                    printf("test\n");
+                }
             }
         }
     }
-
-    if (last_move == -1 || checkWinCondition(board[last_move]) != 0) {
-        int 
-    }
+    printf("grid: %d, square: %d\n", grid, square);
+    return concatenate(grid, square);
 }
+
+// int calculateBestMove(char **argv) {
+//     FEN fen = initFEN(argv);
+//     char *board_state = fen.board_state;
+//     int last_move = fen.last_move -1;
+//     char move_player = fen.move_player;
+
+//     char **board = parseBoard(board_state);
+//     int bestMove = -1;
+//     int bestScore[9];
+
+//     // Calculer le nombre de cases vides
+//     int count = 0;
+//     for(int i = 0; i < 9; i++) {
+//         for(int j = 0; j < 9; j++) {
+//             if(board[i][j] == 0) {
+//                 count++;
+//             }
+//         }
+//     }
+
+//     if (last_move == -1 || checkWinCondition(board[last_move]) != 0) {
+//         int saveMove;
+
+//         if(MOVES < 10) {
+//             savedMm = miniMax(boards, -1, 4, -1000000, 1000000, true); 
+//         }else if(MOVES < 18){
+//             savedMm = miniMax(boards, -1, 5, -1000000, 1000000, true);
+//         }else{
+//             savedMm = miniMax(boards, -1, 6, -1000000, 1000000, true);
+//         }
+//     }
+// }
 
 int main (int argc, char* argv[]) {
     if (argc != 4) {
@@ -400,11 +411,24 @@ int main (int argc, char* argv[]) {
 
     FEN fen = initFEN(argv);
 
+    if (fen.move_player == 'x') {
+        AI = 1;
+        PLAYER = -1;
+    } else {
+        AI = -1;
+        PLAYER = 1;
+    }
+
     printf("board_state: %s\n", fen.board_state);
     printf("last_move: %d\n", fen.last_move);
     printf("move_player: %c\n", fen.move_player);
     
     char **board = parseBoard(fen.board_state);
+
+    for (int i = 0; i < 9; i++) {
+        show_morpion(board[i]);
+    }
+
 
     // for (int i = 0; i < 9; i++) {
     //     show_morpion(board[i]);
