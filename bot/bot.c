@@ -325,11 +325,15 @@ int negamax_alphabeta (char** position, int boardToPlayOn, int alpha, int beta, 
     printf("depth = %d\t", depth);
     printf("COUNT = %d\n", COUNT);
     
-    printf("alpha = %d\tbeta = %d", alpha, beta);
+    printf("alpha = %d\tbeta = %d\n", alpha, beta);
     
     int calcEval = evaluateGame(position, boardToPlayOn);
 
-    if (depth <= 0 || abs(calcEval) > 5000) {
+    // if (COUNT < 10000) {
+    //     return calcEval;
+    // }
+
+    if (depth <= 0 && abs(calcEval) > 5000) {
         printf("depth = %d\tCalcEval = %d\n", depth, calcEval);
         return calcEval;
     }
