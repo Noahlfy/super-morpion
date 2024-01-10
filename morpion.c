@@ -4,10 +4,6 @@
 #include <stdlib.h>
 #include "entête.h"
 
-#define AI 'o'
-#define PLAYER 'x'
-#define PLAYER_O 1
-#define PLAYER_X 2
 
 
 char* init_morpion() {
@@ -75,4 +71,46 @@ char* trans_superMorpion (char** superMorpion) {
         }
     }
     return morpion;
+}
+
+// Transformer le supermorpion avec des 1 des -1 et des 0
+char **transfo_superMorpion (char** superMorpion) {
+    char **superM = malloc(sizeof(char*)*SIZE);
+    for (int i=0; i<SIZE; i++) {
+        superM[i] = malloc(sizeof(char)*SIZE);
+    }
+
+    for (int i=0; i<9; i++) {
+        for (int j=0; j<9; j++) {
+            if (superMorpion[i][j] == 'x') {
+                superM[i][j] = PLAYER_X; 
+            } else if (superMorpion[i][j] == 'o') {
+                superM[i][j] = PLAYER_O;
+            } else {
+                superM[i][j] = 0;
+            }
+        }
+    }
+    return superM;
+}
+
+
+// Fonction pour vérifier si le coup entré est valide
+int isValidMove(char** superMorpion, int grid, char col, int row) {
+    // Vérifier si les valeurs de grille, colonne et ligne sont dans les plages valides
+    if (grid < 1 || grid > SIZE || col < 'a' || col > 'c' || row < 1 || row > SIZE) {
+        return 0; // Coup invalide
+    }
+
+    // Convertir l'entrée en indices du tableau
+    int gridIndex = grid - 1;
+    int colIndex = col - 'a';
+    int rowIndex = row - 1;
+
+    // Vérifier si la cellule est vide
+    if (superMorpion[gridIndex][rowIndex * SIZE + colIndex] == '.') {
+        return 1; // Coup valide
+    } else {
+        return 0; // La cellule n'est pas vide, coup invalide
+    }
 }

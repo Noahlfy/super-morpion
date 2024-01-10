@@ -1,0 +1,33 @@
+# Makefile for Compilation and Graph Generation
+
+# Compiler
+CC = gcc
+
+# Compiler flags
+CFLAGS = -Wall -Wextra
+
+# Target executable
+TARGET = mainn1
+
+# Source file
+SRC = tttree.c
+
+# Dot file
+DOT_FILE = mainn1.dot
+
+# Output PNG file
+PNG_FILE = mainn1.png
+
+all: compile generate_graph 
+
+compile:
+	$(CC) $(SRC) -o $(TARGET) $(CFLAGS)
+
+generate_graph: compile
+	./$(TARGET) "o2xoox2 x" > $(DOT_FILE)
+	dot $(DOT_FILE) -T png -o $(PNG_FILE)
+
+
+
+clean:
+	rm -f $(TARGET) $(DOT_FILE) $(PNG_FILE)

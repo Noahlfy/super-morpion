@@ -73,7 +73,7 @@ int generateDOT(FILE *dotFile, char** superMorpion) {
         }
         if (check_won(superMorpion[i]) == PLAYER_X) {
             showMorpionWon(dotFile, "black");
-        } else if (check_won(superMorpion[i]) == PLAYER_X) {
+        } else if (check_won(superMorpion[i]) == PLAYER_O) {
             showMorpionWon(dotFile, "white");
         } else {
             char string[9];

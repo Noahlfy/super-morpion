@@ -1,0 +1,1168 @@
+digraph  {
+  m0 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m0</TD></TR>
+</TABLE>>];
+
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 1
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 0
+isMaximising = 1
+isMaximising = 1
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+m0 [xlabel="0"]  m1 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m1</TD></TR>
+</TABLE>>];
+
+  m0 -> m1 ;
+isMaximising = 0
+isMaximising = 1
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+m1 [xlabel="-1"]  m2 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m2</TD></TR>
+</TABLE>>];
+
+  m1 -> m2 ;
+isMaximising = 1
+m2 [xlabel="-1"]  m3 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m3</TD></TR>
+</TABLE>>];
+
+  m1 -> m3 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+m3 [xlabel="0"]  m4 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m4</TD></TR>
+</TABLE>>];
+
+  m3 -> m4 ;
+isMaximising = 0
+isMaximising = 1
+m4 [xlabel="0"]  m5 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m5</TD></TR>
+</TABLE>>];
+
+  m4 -> m5 ;
+isMaximising = 1
+m5 [xlabel="0"]  m6 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m6</TD></TR>
+</TABLE>>];
+
+  m3 -> m6 ;
+isMaximising = 0
+isMaximising = 1
+m6 [xlabel="-1"]  m7 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m7</TD></TR>
+</TABLE>>];
+
+  m6 -> m7 ;
+isMaximising = 1
+m7 [xlabel="-1"]  m8 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m8</TD></TR>
+</TABLE>>];
+
+  m1 -> m8 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+m8 [xlabel="0"]  m9 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m9</TD></TR>
+</TABLE>>];
+
+  m8 -> m9 ;
+isMaximising = 0
+isMaximising = 1
+m9 [xlabel="0"]  m10 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m10</TD></TR>
+</TABLE>>];
+
+  m9 -> m10 ;
+isMaximising = 1
+m10 [xlabel="0"]  m11 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m11</TD></TR>
+</TABLE>>];
+
+  m8 -> m11 ;
+isMaximising = 0
+isMaximising = 1
+m11 [xlabel="-1"]  m12 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m12</TD></TR>
+</TABLE>>];
+
+  m11 -> m12 ;
+isMaximising = 1
+m12 [xlabel="-1"]  m13 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m13</TD></TR>
+</TABLE>>];
+
+  m0 -> m13 ;
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+m13 [xlabel="0"]  m14 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m14</TD></TR>
+</TABLE>>];
+
+  m13 -> m14 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+m14 [xlabel="0"]  m15 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m15</TD></TR>
+</TABLE>>];
+
+  m14 -> m15 ;
+isMaximising = 0
+isMaximising = 1
+m15 [xlabel="0"]  m16 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m16</TD></TR>
+</TABLE>>];
+
+  m15 -> m16 ;
+isMaximising = 1
+m16 [xlabel="0"]  m17 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m17</TD></TR>
+</TABLE>>];
+
+  m14 -> m17 ;
+isMaximising = 0
+m17 [xlabel="-1"]  m18 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m18</TD></TR>
+</TABLE>>];
+
+  m13 -> m18 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+m18 [xlabel="0"]  m19 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m19</TD></TR>
+</TABLE>>];
+
+  m18 -> m19 ;
+isMaximising = 0
+isMaximising = 1
+m19 [xlabel="0"]  m20 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m20</TD></TR>
+</TABLE>>];
+
+  m19 -> m20 ;
+isMaximising = 1
+m20 [xlabel="0"]  m21 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m21</TD></TR>
+</TABLE>>];
+
+  m18 -> m21 ;
+isMaximising = 0
+m21 [xlabel="-1"]  m22 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m22</TD></TR>
+</TABLE>>];
+
+  m13 -> m22 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+m22 [xlabel="0"]  m23 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m23</TD></TR>
+</TABLE>>];
+
+  m22 -> m23 ;
+isMaximising = 0
+isMaximising = 1
+m23 [xlabel="0"]  m24 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m24</TD></TR>
+</TABLE>>];
+
+  m23 -> m24 ;
+isMaximising = 1
+m24 [xlabel="0"]  m25 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m25</TD></TR>
+</TABLE>>];
+
+  m22 -> m25 ;
+isMaximising = 0
+isMaximising = 1
+m25 [xlabel="0"]  m26 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m26</TD></TR>
+</TABLE>>];
+
+  m25 -> m26 ;
+isMaximising = 1
+m26 [xlabel="0"]  m27 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m27</TD></TR>
+</TABLE>>];
+
+  m0 -> m27 ;
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 1
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+m27 [xlabel="-1"]  m28 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m28</TD></TR>
+</TABLE>>];
+
+  m27 -> m28 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+m28 [xlabel="0"]  m29 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m29</TD></TR>
+</TABLE>>];
+
+  m28 -> m29 ;
+isMaximising = 0
+isMaximising = 1
+m29 [xlabel="0"]  m30 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m30</TD></TR>
+</TABLE>>];
+
+  m29 -> m30 ;
+isMaximising = 1
+m30 [xlabel="0"]  m31 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m31</TD></TR>
+</TABLE>>];
+
+  m28 -> m31 ;
+isMaximising = 0
+isMaximising = 1
+m31 [xlabel="-1"]  m32 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m32</TD></TR>
+</TABLE>>];
+
+  m31 -> m32 ;
+isMaximising = 1
+m32 [xlabel="-1"]  m33 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m33</TD></TR>
+</TABLE>>];
+
+  m27 -> m33 ;
+isMaximising = 1
+m33 [xlabel="-1"]  m34 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m34</TD></TR>
+</TABLE>>];
+
+  m27 -> m34 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+m34 [xlabel="0"]  m35 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m35</TD></TR>
+</TABLE>>];
+
+  m34 -> m35 ;
+isMaximising = 0
+isMaximising = 1
+m35 [xlabel="-1"]  m36 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m36</TD></TR>
+</TABLE>>];
+
+  m35 -> m36 ;
+isMaximising = 1
+m36 [xlabel="-1"]  m37 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m37</TD></TR>
+</TABLE>>];
+
+  m34 -> m37 ;
+isMaximising = 0
+isMaximising = 1
+m37 [xlabel="0"]  m38 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m38</TD></TR>
+</TABLE>>];
+
+  m37 -> m38 ;
+isMaximising = 1
+m38 [xlabel="0"]  m39 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m39</TD></TR>
+</TABLE>>];
+
+  m0 -> m39 ;
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+isMaximising = 0
+isMaximising = 1
+isMaximising = 1
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+m39 [xlabel="-1"]  m40 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m40</TD></TR>
+</TABLE>>];
+
+  m39 -> m40 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 0
+isMaximising = 1
+m40 [xlabel="-1"]  m41 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m41</TD></TR>
+</TABLE>>];
+
+  m40 -> m41 ;
+isMaximising = 0
+m41 [xlabel="-1"]  m42 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m42</TD></TR>
+</TABLE>>];
+
+  m40 -> m42 ;
+isMaximising = 0
+isMaximising = 1
+m42 [xlabel="-1"]  m43 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m43</TD></TR>
+</TABLE>>];
+
+  m42 -> m43 ;
+isMaximising = 1
+m43 [xlabel="-1"]  m44 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m44</TD></TR>
+</TABLE>>];
+
+  m39 -> m44 ;
+isMaximising = 1
+m44 [xlabel="-1"]  m45 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m45</TD></TR>
+</TABLE>>];
+
+  m39 -> m45 ;
+isMaximising = 1
+isMaximising = 0
+isMaximising = 1
+isMaximising = 0
+m45 [xlabel="-1"]  m46 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">.</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m46</TD></TR>
+</TABLE>>];
+
+  m45 -> m46 ;
+isMaximising = 0
+isMaximising = 1
+m46 [xlabel="-1"]  m47 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'green' colspan='3'>m47</TD></TR>
+</TABLE>>];
+
+  m46 -> m47 ;
+isMaximising = 1
+m47 [xlabel="-1"]  m48 [shape=none label=<<TABLE border='0' cellspacing='10' cellpadding='10' style='rounded' bgcolor='black'>
+    <TR>
+    <TD bgcolor="white">.</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR>
+    <TD bgcolor="white">O</TD>
+    <TD bgcolor="white">X</TD>
+    <TD bgcolor="white">X</TD>
+    </TR>
+    <TR><TD bgcolor= 'red' colspan='3'>m48</TD></TR>
+</TABLE>>];
+
+  m45 -> m48 ;
+isMaximising = 0
+m48 [xlabel="-1"]}
