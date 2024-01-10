@@ -320,23 +320,18 @@ double evaluateGame(char **position, int currentBoard) {
     return evale;
 }
 
+#define DEPTH_MAX 5
+
 int negamax_alphabeta (char** position, int boardToPlayOn, int alpha, int beta, int depth, int maximizingPlayer) {
-    COUNT++;
-    printf("depth = %d\t", depth);
-    printf("COUNT = %d\n", COUNT);
-    
-    printf("alpha = %d\tbeta = %d\n", alpha, beta);
-    
+    printf("COUCOU1\n");
     int calcEval = evaluateGame(position, boardToPlayOn);
 
-    // if (COUNT < 10000) {
-    //     return calcEval;
-    // }
-
-    if (depth <= 0 && abs(calcEval) > 5000) {
-        printf("depth = %d\tCalcEval = %d\n", depth, calcEval);
+    printf("COUCOU2\n");
+    if (depth >= DEPTH_MAX || abs(calcEval) > 5000) {
         return calcEval;
     }
+    printf("COUCOU3\n");
+
 
     // Si le plateau sur lequel jouer est -1, cela signifie que vous pouvez jouer sur n'importe quel plateau.
     if (boardToPlayOn != -1  && checkWinCondition(position[boardToPlayOn]) != 0) {
@@ -357,11 +352,11 @@ int negamax_alphabeta (char** position, int boardToPlayOn, int alpha, int beta, 
                     if (checkWinCondition(position[i]) == 0) {
                         if (position[i][j] == 0) {
                             position[i][j] = AI;
-                            maxEval = max(maxEval, negamax_alphabeta(position, i, depth - 1, alpha, beta, 0));
+                            maxEval = max(maxEval, negamax_alphabeta(position, i, alpha, beta, depth + 1, 0));
                             position[i][j] = 0;
                         }
                         alpha = max(alpha, maxEval);
-                        printf("alpha: %d\n", alpha);
+                        // printf("alpha: %d\n", alpha);
                     }
                 }
                 if(beta <= alpha){
@@ -372,12 +367,12 @@ int negamax_alphabeta (char** position, int boardToPlayOn, int alpha, int beta, 
                 for (int j=0; i<9; j++) {
                     if (position[boardToPlayOn][j] == 0) {
                         position[boardToPlayOn][j] = AI;
-                        maxEval = max(maxEval, negamax_alphabeta(position, boardToPlayOn, depth - 1, alpha, beta, 0));
+                        maxEval = max(maxEval, negamax_alphabeta(position, boardToPlayOn, alpha, beta, depth + 1, 0));
                         position[boardToPlayOn][j] = 0;
                     }
                 }
                 alpha = max(alpha, maxEval);
-                printf("alpha: %d\n", alpha);
+                // printf("alpha: %d\n", alpha);
                 if(beta <= alpha){
                     break;
                 }
@@ -393,11 +388,11 @@ int negamax_alphabeta (char** position, int boardToPlayOn, int alpha, int beta, 
                     if (checkWinCondition(position[i]) == 0) {
                         if (position[i][j] == 0) {
                             position[i][j] = PLAYER;
-                            minEval = max(minEval, -negamax_alphabeta(position, i, depth - 1, alpha, beta, 1));
+                            minEval = max(minEval, -negamax_alphabeta(position, i, alpha, beta, depth + 1, 1));
                             position[i][j] = 0;
                         }
                         beta = min(beta, minEval);
-                        printf("beta: %d\n", beta);
+                        // printf("beta: %d\n", beta);
                     }
                 }
                 if(beta <= alpha){
@@ -408,12 +403,12 @@ int negamax_alphabeta (char** position, int boardToPlayOn, int alpha, int beta, 
                 for (int j=0; j<9; j++) {
                     if (position[boardToPlayOn][j] == 0) {
                         position[boardToPlayOn][j] = AI;
-                        minEval = max(minEval, -negamax_alphabeta(position, boardToPlayOn, depth - 1, alpha, beta, 1));
+                        minEval = max(minEval, -negamax_alphabeta(position, boardToPlayOn, alpha, beta, depth + 1, 1));
                         position[boardToPlayOn][j] = 0;
                     }
                 }
                 beta = min(beta, minEval);
-                printf("beta: %d\n", beta);
+                // printf("beta: %d\n", beta);
                 if(beta <= alpha){
                     break;
                 }
@@ -468,6 +463,7 @@ int calculateBestMove(char **argv) {
                     for (int j = 0; j < 9; j++) {
                         if (board[i][j] == 0) {
                             board[i][j] = AI;
+                            printf("BLABLA1\n");
                             int score = negamax_alphabeta(board, i, -100000, 100000, min(count,10), 0);
                             board[i][j] = 0;
                             if (score > bestScore) {
@@ -484,6 +480,7 @@ int calculateBestMove(char **argv) {
             for (int i = 0; i < 9; i++) {
                 if (board[last_move-1][i] == 0) {
                     board[last_move-1][i] = AI;
+                    printf("BLABLA2\n");
                     int score = negamax_alphabeta(board, i, -100000, 100000, min(count,10), 0);
                     board[last_move-1][i] = 0;
                     if (score > bestScore) {
